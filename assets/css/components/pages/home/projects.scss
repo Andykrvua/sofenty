@@ -1,0 +1,133 @@
+.projects {
+  color: var(--black-abs);
+  background-color: var(--white);
+}
+
+.projects-header {
+  display: flex;
+  align-items: flex-start;
+  .h4 {
+    max-width: 775px;
+    margin-left: 116px;
+  }
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 100svh;
+  aspect-ratio: 16/8;
+  padding: 35px 30px;
+  border-radius: 15px;
+  color: var(--white);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.project-item:first-child {
+  margin-left: var(--contpadding);
+}
+
+.item-content {
+  display: flex;
+  justify-content: space-between;
+  .content-left {
+    max-width: 515px;
+  }
+  .content-right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-content: flex-end;
+    gap: 5px;
+  }
+}
+
+.numbers {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.numbers + .numbers {
+  margin-left: 50px;
+}
+
+.title {
+  margin: 5px 0 10px;
+}
+
+.mobile-btn-wrapper {
+  display: none;
+}
+
+/* br tablet */
+@media (max-width: 1270px) {
+  .projects {
+    padding-top: 140px;
+  }
+  .projects-header {
+    .h4 {
+      max-width: unset;
+      margin-left: 0;
+    }
+    .rounded-btn-arrow {
+      display: none;
+    }
+  }
+  .project-item {
+    aspect-ratio: 16/14;
+  }
+  .item-content {
+    flex-wrap: wrap;
+    .content-right {
+      justify-content: flex-start;
+      align-content: flex-start;
+      margin-top: 20px;
+    }
+  }
+  .title {
+    font-size: 32px;
+    line-height: 120%;
+  }
+  .mobile-btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 140px;
+  }
+}
+
+/* br mobile */
+@media (max-width: 767px) {
+  .projects {
+    padding-top: 80px;
+  }
+  .projects-header {
+    .h4 {
+      font-size: 28px;
+      line-height: 120%;
+    }
+  }
+  .project-item {
+    aspect-ratio: 12/16;
+    padding: 20px 20px 30px;
+  }
+  .title {
+    margin: 10px 0;
+  }
+  .text {
+    font-size: 14px;
+    line-height: 120%;
+  }
+  .mobile-btn-wrapper {
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 550px) {
+  .project-item {
+    aspect-ratio: 10/18;
+  }
+}

@@ -1,0 +1,38 @@
+:root {
+  --base-bg: #181818;
+  --base-f: #fff;
+  --black: #181818;
+  --black-hard: #212121;
+  --black-abs: #000;
+  --f-w-40: rgba(255, 255, 255, 0.4);
+  --white: #fff;
+  --blue: #00a0dc;
+  --contpadding: 50px;
+  --contcomp: -50px;
+  --header-h: 83px;
+  --z-header: 2;
+  --z-canvas-main-hero: 0;
+  --base-tr: 0.3s ease-in-out;
+}
+/* br md */
+/* @media (max-width: 1536px) {
+  :root {
+    --contpadding: 28px;
+    --contcomp: -28px;
+  }
+} */
+/* br tablet */
+/* @media (max-width: 1270px) {
+  :root {
+    --contpadding: 20px;
+    --contcomp: -20px;
+  }
+} */
+/* br mobile */
+@media (max-width: 767px) {
+  :root {
+    --header-h: 50px;
+    --contpadding: 10px;
+    --contcomp: -10px;
+  }
+}
