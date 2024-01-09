@@ -13,6 +13,7 @@ import {
   IcosahedronGeometry,
   DirectionalLight,
   AmbientLight,
+  GridHelper,
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
@@ -38,11 +39,15 @@ let camera,
   maxX = 110,
   minY = -70,
   maxY = 70;
+// minX = -60,
+// maxX = 60,
+// minY = -40,
+// maxY = 40;
 
 const target = {
   position: {
-    x: -20,
-    y: 20,
+    x: null,
+    y: null,
   },
 };
 
@@ -55,6 +60,7 @@ const onWindowResize = () => {
   camera.aspect = container.value.clientWidth / container.value.clientHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(container.value.clientWidth, container.value.clientHeight);
+  mesh.position.set(0, 0, 0);
 };
 
 const animate = () => {
@@ -77,17 +83,19 @@ const animate = () => {
   if (mesh.position.y < minY) mesh.position.y = minY;
   if (mesh.position.y > maxY) mesh.position.y = maxY;
 
-  if (mesh.position.x / 8 <= target.position.x) {
-    mesh.position.x += meshsSpeed;
-  }
-  if (mesh.position.x / 8 >= target.position.x) {
-    mesh.position.x -= meshsSpeed;
-  }
-  if (mesh.position.y / 8 <= target.position.y) {
-    mesh.position.y += meshsSpeed;
-  }
-  if (mesh.position.y / 8 >= target.position.y) {
-    mesh.position.y -= meshsSpeed;
+  if (target.position.x && target.position.y) {
+    if (mesh.position.x / 8 <= target.position.x) {
+      mesh.position.x += meshsSpeed;
+    }
+    if (mesh.position.x / 8 >= target.position.x) {
+      mesh.position.x -= meshsSpeed;
+    }
+    if (mesh.position.y / 8 <= target.position.y) {
+      mesh.position.y += meshsSpeed;
+    }
+    if (mesh.position.y / 8 >= target.position.y) {
+      mesh.position.y -= meshsSpeed;
+    }
   }
 
   mesh.rotation.y += 0.006;
@@ -125,6 +133,9 @@ onMounted(() => {
 
     scene = new Scene();
     const geometry = new IcosahedronGeometry(30, 10);
+
+    // const gridHelper = new GridHelper(100, 20);
+    // scene.add(gridHelper);
 
     const directionalLight = new DirectionalLight('#fff', 2);
     directionalLight.position.set(0, 50, -20);

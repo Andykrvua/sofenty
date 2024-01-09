@@ -5,6 +5,23 @@
   line-height: 44px;
 }
 
+.big-menu {
+  font-size: 100px;
+  font-weight: 300;
+  line-height: 100px;
+  transition: color var(--base-tr);
+}
+
+.big-menu:active {
+  color: var(--blue);
+}
+
+@media (hover: hover) {
+  .big-menu:hover {
+    color: var(--blue);
+  }
+}
+
 .tab {
   font-size: 14px;
   line-height: 14px;
@@ -15,7 +32,6 @@
   font-weight: 300;
   line-height: 120%;
 }
-
 /* br mobile */
 @media (max-width: 767px) {
   .text.text-14 {

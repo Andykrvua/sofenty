@@ -66,14 +66,6 @@
   color: var(--f-w-40);
 }
 
-.contacts {
-  display: flex;
-  flex-direction: column;
-  .tab + .tab {
-    margin-top: 5px;
-  }
-}
-
 .nav ul {
   display: flex;
   flex-direction: column;

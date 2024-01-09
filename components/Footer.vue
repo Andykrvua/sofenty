@@ -11,14 +11,7 @@
     <div class="footer-navs">
       <CommonFormAction />
       <div class="nav-wrapper">
-        <div class="contacts">
-          <h6 class="text">Контакти</h6>
-          <a class="tab" :href="`mailto:${contactsEnums.email}`">{{ contactsEnums.email }}</a>
-          <a class="tab" :href="`tel:${contactsEnums.phone}`">{{ contactsEnums.phone }}</a>
-          <a class="tab" style="margin-top: 15px" :href="contactsEnums.telegram">Telegram</a>
-          <a class="tab" :href="contactsEnums.whatsApp">WhatsApp</a>
-          <a class="tab" :href="contactsEnums.viber">Viber</a>
-        </div>
+        <CommonContactsBlock />
         <nav class="nav">
           <h6 class="text">Меню</h6>
           <ul>

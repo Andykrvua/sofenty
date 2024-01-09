@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     },
   },
   // plugins: ['~/plugins/simplex-noise-plugin.js'],
-  modules: ['@nuxtjs/i18n', 'nuxt-swiper'],
+  modules: ['@nuxtjs/i18n', 'nuxt-swiper', '@vueuse/nuxt'],
   css: ['~/assets/css/critical.scss', '~/assets/css/style.scss'],
   build: {
     transpile: ['gsap'],
