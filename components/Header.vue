@@ -1,6 +1,6 @@
 <template>
   <header ref="main" class="header container">
-    <NuxtLink to="/" class="logo" :class="{ change: toggle }">
+    <NuxtLink to="/" class="logo" :class="{ change: toggle }" @click="beforeLeave">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 58 40"
@@ -48,19 +48,29 @@
         <nav class="nav">
           <ul>
             <li>
-              <NuxtLink :to="localePath(navEnums.about)" class="big-menu">Про нас</NuxtLink>
+              <NuxtLink :to="localePath(navEnums.about)" @click="beforeLeave" class="big-menu"
+                >Про нас</NuxtLink
+              >
             </li>
             <li>
-              <NuxtLink :to="localePath(navEnums.service)" class="big-menu">Послуги</NuxtLink>
+              <NuxtLink :to="localePath(navEnums.service)" @click="beforeLeave" class="big-menu"
+                >Послуги</NuxtLink
+              >
             </li>
             <li>
-              <NuxtLink :to="localePath(navEnums.portfolio)" class="big-menu">Портфоліо</NuxtLink>
+              <NuxtLink :to="localePath(navEnums.portfolio)" @click="beforeLeave" class="big-menu"
+                >Портфоліо</NuxtLink
+              >
             </li>
             <li>
-              <NuxtLink :to="localePath(navEnums.vacancies)" class="big-menu">Вакансії</NuxtLink>
+              <NuxtLink :to="localePath(navEnums.vacancies)" @click="beforeLeave" class="big-menu"
+                >Вакансії</NuxtLink
+              >
             </li>
             <li class="desktop-hidden">
-              <NuxtLink :to="localePath(navEnums.contacts)" class="big-menu">Контакти</NuxtLink>
+              <NuxtLink :to="localePath(navEnums.contacts)" @click="beforeLeave" class="big-menu"
+                >Контакти</NuxtLink
+              >
             </li>
           </ul>
         </nav>
@@ -82,17 +92,25 @@ let tlM;
 
 let isLocked = useScrollLock(null);
 
+const beforeLeave = () => {
+  if (toggle.value) {
+    toggleMenu();
+  }
+};
+
+const reverseAnimationEnded = () => {
+  isLocked.value = false;
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    main.value.style.paddingRight = 'var(--contpadding)';
+    document.querySelector('body').style.paddingRight = '';
+  }
+};
+
 const toggleMenu = () => {
   if (toggle.value) {
     tl.reverse();
     tlM.reverse();
     menu.value.style.pointerEvents = 'none';
-    isLocked.value = false;
-    if (window.matchMedia('(min-width: 768px)').matches) {
-      main.value.style.paddingRight = 'var(--contpadding)';
-      document.querySelector('body').style.paddingRight = '';
-    }
-
     toggle.value = false;
   } else {
     isLocked.value = true;
@@ -122,6 +140,7 @@ onMounted(async () => {
       duration: 1,
       clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
       ease: 'power2.out',
+      onReverseComplete: reverseAnimationEnded,
     });
 
     tl.from(

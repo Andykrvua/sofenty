@@ -2,12 +2,12 @@ export const contactsEnums = {
   telegram: '/',
   whatsApp: '/',
   viber: '/',
-  email: 'info@simple-smart.com.ua',
-  phone: '+380965847201',
+  email: 'support@sofenty.com',
+  phone: '+380993183456',
 };
 
 export const navEnums = {
-  about: '/',
+  about: '/about',
   service: '/',
   portfolio: '/',
   vacancies: '/',

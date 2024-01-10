@@ -63,7 +63,7 @@
   top: var(--header-h);
   pointer-events: none;
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  background: radial-gradient(#1d1d1d, #181818);
+  background: var(--menu-overlay);
 }
 
 .menu-wrapper {
@@ -85,6 +85,9 @@
 
 .big-menu {
   display: flex;
+  &.router-link-exact-active {
+    color: var(--blue);
+  }
 }
 
 .desktop-hidden {

@@ -13,16 +13,20 @@ import {
   IcosahedronGeometry,
   DirectionalLight,
   AmbientLight,
-  GridHelper,
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const container = ref();
 
+// index or about
 const props = defineProps({
   textureUrl: {
     type: String,
     default: '/5.avif',
+  },
+  page: {
+    type: String,
+    default: 'index',
   },
 });
 
@@ -60,7 +64,6 @@ const onWindowResize = () => {
   camera.aspect = container.value.clientWidth / container.value.clientHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(container.value.clientWidth, container.value.clientHeight);
-  mesh.position.set(0, 0, 0);
 };
 
 const animate = () => {
@@ -78,23 +81,25 @@ const animate = () => {
   mesh.geometry.computeVertexNormals();
   mesh.geometry.computeFaceNormals();
 
-  if (mesh.position.x < minX) mesh.position.x = minX;
-  if (mesh.position.x > maxX) mesh.position.x = maxX;
-  if (mesh.position.y < minY) mesh.position.y = minY;
-  if (mesh.position.y > maxY) mesh.position.y = maxY;
+  if (props.page === 'index') {
+    if (mesh.position.x < minX) mesh.position.x = minX;
+    if (mesh.position.x > maxX) mesh.position.x = maxX;
+    if (mesh.position.y < minY) mesh.position.y = minY;
+    if (mesh.position.y > maxY) mesh.position.y = maxY;
 
-  if (target.position.x && target.position.y) {
-    if (mesh.position.x / 8 <= target.position.x) {
-      mesh.position.x += meshsSpeed;
-    }
-    if (mesh.position.x / 8 >= target.position.x) {
-      mesh.position.x -= meshsSpeed;
-    }
-    if (mesh.position.y / 8 <= target.position.y) {
-      mesh.position.y += meshsSpeed;
-    }
-    if (mesh.position.y / 8 >= target.position.y) {
-      mesh.position.y -= meshsSpeed;
+    if (target.position.x && target.position.y) {
+      if (mesh.position.x / 8 <= target.position.x) {
+        mesh.position.x += meshsSpeed;
+      }
+      if (mesh.position.x / 8 >= target.position.x) {
+        mesh.position.x -= meshsSpeed;
+      }
+      if (mesh.position.y / 8 <= target.position.y) {
+        mesh.position.y += meshsSpeed;
+      }
+      if (mesh.position.y / 8 >= target.position.y) {
+        mesh.position.y -= meshsSpeed;
+      }
     }
   }
 
@@ -128,8 +133,13 @@ onMounted(() => {
   }, 1000);
 
   function init() {
-    camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000);
-    camera.position.set(0, 0, 200);
+    if (props.page === 'index') {
+      camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000);
+      camera.position.set(0, 0, 200);
+    } else if (props.page === 'about') {
+      camera = new PerspectiveCamera(30, (window.innerWidth * 1.3) / window.innerHeight, 0.01, 1000);
+      camera.position.set(0, 0, 170);
+    }
 
     scene = new Scene();
     const geometry = new IcosahedronGeometry(30, 10);
@@ -153,7 +163,8 @@ onMounted(() => {
     if (window.innerWidth < 768) {
       mesh.position.set(0, 0, 0);
     } else {
-      mesh.position.set(-35, 20, 0);
+      mesh.position.set(0, 0, 0);
+      // mesh.position.set(-35, 20, 0);
     }
     scene.add(mesh);
 

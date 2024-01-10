@@ -19,7 +19,7 @@
   width: 100%;
   height: 100svh;
   inset: 0;
-  background: radial-gradient(#1d1d1d, #181818);
+  background: var(--menu-overlay);
   z-index: var(--z-canvas-main-hero);
 }
 </style>
