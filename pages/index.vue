@@ -3,7 +3,7 @@
     <PagesHomeFirstScreen />
     <PagesHomeServices />
     <PagesHomeProjects />
-    <PagesHomeTeams />
+    <CommonTeamsBlock />
     <PagesHomeClients />
     <div class="canvas-main-hero">
       <ClientOnly>

@@ -1,7 +1,7 @@
 <template>
   <section ref="main" class="projects">
     <div class="projects-header container">
-      <NuxtLink :to="localePath('/')" class="btn rounded-btn-arrow"
+      <NuxtLink :to="localePath(navEnums.portfolio)" class="btn rounded-btn-arrow"
         ><span>Проєкти<CommonSvgArrow :color="'var(--black)'" :size="'small'" /></span
       ></NuxtLink>
       <h4 class="h4">Спрощуємо, автоматизовуємо та виводимо бізнес на новий рівень.</h4>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="container mobile-btn-wrapper">
-      <NuxtLink :to="localePath('/')" class="btn rounded-btn-arrow"
+      <NuxtLink :to="localePath(navEnums.portfolio)" class="btn rounded-btn-arrow"
         ><span>Проєкти<CommonSvgArrow :color="'var(--black)'" :size="'small'" /></span
       ></NuxtLink>
     </div>

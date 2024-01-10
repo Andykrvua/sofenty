@@ -137,8 +137,12 @@ onMounted(() => {
       camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000);
       camera.position.set(0, 0, 200);
     } else if (props.page === 'about') {
-      camera = new PerspectiveCamera(30, (window.innerWidth * 1.3) / window.innerHeight, 0.01, 1000);
-      camera.position.set(0, 0, 170);
+      camera = new PerspectiveCamera(30, (window.innerWidth * 1.4) / window.innerHeight, 0.01, 1000);
+      if (window.innerWidth < 768) {
+        camera.position.set(0, 0, 200);
+      } else {
+        camera.position.set(0, 0, 170);
+      }
     }
 
     scene = new Scene();
@@ -163,8 +167,11 @@ onMounted(() => {
     if (window.innerWidth < 768) {
       mesh.position.set(0, 0, 0);
     } else {
-      mesh.position.set(0, 0, 0);
-      // mesh.position.set(-35, 20, 0);
+      if (props.page === 'index') {
+        mesh.position.set(-35, 20, 0);
+      } else {
+        mesh.position.set(0, 0, 0);
+      }
     }
     scene.add(mesh);
 

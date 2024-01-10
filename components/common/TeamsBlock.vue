@@ -1,10 +1,14 @@
 <template>
   <section ref="main" class="teams container">
-    <NuxtLink :to="localePath('/')" class="btn rounded-btn-arrow rounded-btn-arrow__white">
+    <NuxtLink
+      :to="localePath(navEnums.about)"
+      class="btn rounded-btn-arrow rounded-btn-arrow__white"
+      :class="{ hide: props.page === 'about' }"
+    >
       <span> Про нас<CommonSvgArrow :color="'var(--white)'" :size="'small'" /></span>
     </NuxtLink>
     <div class="teams-grid">
-      <p class="h3">Це ми</p>
+      <p class="h3" :class="{ show: props.page === 'about' }">Це ми</p>
       <img src="~/assets/img/teams/1.webp" class="img-1" width="180" height="180" alt="Вася" loading="lazy" />
       <img
         src="~/assets/img/teams/2.webp"
@@ -59,17 +63,27 @@
 <script setup>
 import gsap from 'gsap';
 
+// index or about
+const props = defineProps({
+  page: {
+    type: String,
+    default: 'index',
+  },
+});
+
 let ctx;
 const main = ref();
 
 const moveThree = (val) => {
-  if (main.value) {
-    const top = main.value.offsetTop;
-    let canvas = document.querySelector('.canvas-main-hero');
-    if (val) {
-      canvas.style.top = top + 'px';
-    } else {
-      canvas.style.top = '0px';
+  if (props.page === 'index') {
+    if (main.value) {
+      const top = main.value.offsetTop;
+      let canvas = document.querySelector('.canvas-main-hero');
+      if (val) {
+        canvas.style.top = top + 'px';
+      } else {
+        canvas.style.top = '0px';
+      }
     }
   }
 };
@@ -138,7 +152,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import url('~/assets/css/components/pages/home/teams.scss');
+@import url('~/assets/css/components/common/teams.scss');
 
 @media (min-width: 768px) {
   img {

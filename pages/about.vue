@@ -1,7 +1,10 @@
 <template>
   <main class="page">
     <PagesAboutFirstScreen />
-    <PagesHomeServices />
+    <CommonTeamsBlock :page="'about'" />
+    <PagesAboutNumbers />
+    <PagesHomeClients />
+    <PagesAboutPortfolio />
   </main>
 </template>
 

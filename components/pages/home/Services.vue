@@ -1,6 +1,6 @@
 <template>
   <section class="services container">
-    <NuxtLink :to="localePath('/')" class="btn rounded-btn-arrow"
+    <NuxtLink :to="localePath(navEnums.service)" class="btn rounded-btn-arrow"
       ><span>Послуги<CommonSvgArrow :color="'var(--black)'" :size="'small'" /></span
     ></NuxtLink>
     <div class="services-slides">

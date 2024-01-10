@@ -81,6 +81,7 @@ const onMouseMove = (e) => {
 };
 
 const parallaxIt = (e, target, reverse) => {
+  if (!main.value) return;
   let relX = e.pageX - main.value.offsetLeft;
   let relY = e.pageY - main.value.offsetTop;
   if (reverse) {
