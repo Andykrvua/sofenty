@@ -123,7 +123,7 @@ const run = () => {
 };
 
 onMounted(() => {
-  console.log('onMounted');
+  console.log('THREE onMounted');
   init();
 
   run();
@@ -134,10 +134,20 @@ onMounted(() => {
 
   function init() {
     if (props.page === 'index') {
-      camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000);
+      camera = new PerspectiveCamera(
+        45,
+        container.value.clientWidth / container.value.clientHeight,
+        0.01,
+        1000
+      );
       camera.position.set(0, 0, 200);
     } else if (props.page === 'about') {
-      camera = new PerspectiveCamera(30, (window.innerWidth * 1.4) / window.innerHeight, 0.01, 1000);
+      camera = new PerspectiveCamera(
+        30,
+        container.value.clientWidth / container.value.clientHeight,
+        0.01,
+        1000
+      );
       if (window.innerWidth < 768) {
         camera.position.set(0, 0, 200);
       } else {

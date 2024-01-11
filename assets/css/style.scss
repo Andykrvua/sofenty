@@ -94,6 +94,11 @@
   line-height: 110%;
 }
 
+.h5 {
+  font-size: 36px;
+  line-height: 120%;
+}
+
 .h6 {
   font-size: 28px;
   font-weight: 300;
@@ -291,12 +296,6 @@ a.rounded-btn-arrow {
   color: var(--black);
   background-color: var(--white);
   transition: background-color var(--base-tr), color var(--base-tr);
-  // span {
-  //   position: relative;
-  //   display: block;
-  //   top: 50%;
-  //   transform: translateY(-50%);
-  // }
   .up {
     padding-top: 4px;
   }
@@ -371,5 +370,43 @@ a.rounded-btn-arrow {
   .lead-btn__mobile:active {
     color: var(--white);
     background-color: transparent;
+  }
+}
+
+.slider-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: var(--white);
+  transition: background-color var(--base-tr);
+  svg path {
+    transition: fill var(--base-tr);
+  }
+}
+
+.slider-btn:active {
+  background-color: var(--blue);
+  svg path {
+    fill: var(--white);
+  }
+}
+
+@media (hover: hover) {
+  .slider-btn:hover {
+    background-color: var(--blue);
+    svg path {
+      fill: var(--white);
+    }
+  }
+}
+
+/* br mobile */
+@media (max-width: 767px) {
+  .slider-btn {
+    width: 60px;
+    height: 60px;
   }
 }

@@ -8,7 +8,7 @@ export const contactsEnums = {
 
 export const navEnums = {
   about: '/about',
-  service: '/',
+  service: '/service',
   portfolio: '/',
   vacancies: '/',
   contacts: '/',
