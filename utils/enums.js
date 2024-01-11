@@ -11,5 +11,5 @@ export const navEnums = {
   service: '/service',
   portfolio: '/',
   vacancies: '/',
-  contacts: '/',
+  contacts: '/contacts',
 };

@@ -17,6 +17,9 @@ body,
   font-size: 18px;
   color: var(--base-f);
   background-color: var(--base-bg);
+  &.light {
+    background-color: var(--white);
+  }
 }
 
 ::-webkit-scrollbar {

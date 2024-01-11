@@ -1,16 +1,18 @@
 <template>
-  <footer class="footer container">
-    <div class="footer-content">
+  <footer class="footer container" :class="{ light: mode === 'light', contacts: type === 'contacts' }">
+    <div v-if="type === 'default'" class="footer-content">
       <p class="h4">
         Прагнучи дати клієнтам краще, ми об'єднуємо зусилля, віддаємо душу та серце роботі, а результати
         говорять самі за себе.
       </p>
-      <a class="phone" :href="`tel:${contactsEnums.phone}`"><CommonSvgPhone /></a>
-      <div class="pulse"></div>
+      <CommonPulsePhone />
     </div>
     <div class="footer-navs">
-      <CommonFormAction />
-      <div class="nav-wrapper">
+      <p class="h4" v-if="type === 'contacts'">
+        Замовте дзвінок.<br />Протягом 10 хвилин ми вам зателефонуємо.
+      </p>
+      <CommonFormAction :mode="mode" />
+      <div v-if="type === 'default'" class="nav-wrapper">
         <CommonContactsBlock />
         <nav class="nav">
           <h6 class="text">Меню</h6>
@@ -37,6 +39,21 @@
     </div>
   </footer>
 </template>
+
+<script setup>
+// dark or light
+// default or contacts
+const props = defineProps({
+  mode: {
+    type: String,
+    default: 'dark',
+  },
+  type: {
+    type: String,
+    default: 'default',
+  },
+});
+</script>
 
 <style lang="scss" scoped>
 @import url('~/assets/css/components/footer.scss');

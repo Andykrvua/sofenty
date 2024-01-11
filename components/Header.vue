@@ -1,5 +1,5 @@
 <template>
-  <header ref="main" class="header container">
+  <header ref="main" class="header container" :class="{ light: mode === 'light' }">
     <NuxtLink to="/" class="logo" :class="{ change: toggle }" @click="beforeLeave">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@
         :aria-expanded="toggle"
         aria-controls="main-menu"
       ></button>
-      <CommonLangSwitcher :visible="toggle" />
+      <CommonLangSwitcher :class="{ light: mode === 'light' }" :visible="toggle" />
     </div>
     <button class="lead-btn btn">{{ $t('header.lead_btn') }}</button>
     <div ref="menu" id="main-menu" class="menu-overlay">
@@ -82,6 +82,14 @@
 
 <script setup>
 import gsap from 'gsap';
+
+// dark or light
+const props = defineProps({
+  mode: {
+    type: String,
+    default: 'dark',
+  },
+});
 
 const main = ref();
 const menu = ref();

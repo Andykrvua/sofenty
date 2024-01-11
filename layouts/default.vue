@@ -9,11 +9,11 @@
         <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
       </template>
     </Head>
-    <Body>
+    <Body :class="{ light: colorMode === 'light' }">
       <div class="page-wrapper">
-        <Header />
+        <Header :mode="colorMode" />
         <slot />
-        <Footer />
+        <Footer :mode="colorMode" :type="footerType" />
       </div>
     </Body>
   </Html>
@@ -21,6 +21,30 @@
 
 <script setup>
 const route = useRoute();
+const colorMode = ref('dark');
+const footerType = ref('default');
+
+const modeToogle = () => {
+  if (route.path.includes('/contacts')) {
+    colorMode.value = 'light';
+    footerType.value = 'contacts';
+  } else {
+    colorMode.value = 'dark';
+    footerType.value = 'default';
+  }
+};
+
+if (route.path.includes('/contacts')) {
+  modeToogle();
+}
+
+watch(
+  () => route.path,
+  () => {
+    modeToogle();
+  }
+);
+
 const { t } = useI18n();
 const head = useLocaleHead({
   addDirAttribute: true,

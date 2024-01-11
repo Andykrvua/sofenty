@@ -18,6 +18,15 @@
   font-size: 26px;
   font-weight: 600;
   letter-spacing: 0.78px;
+  svg {
+    .up-path,
+    .down-path {
+      transition: fill var(--base-tr);
+    }
+  }
+  .logo-txt {
+    transition: transform var(--base-tr), color var(--base-tr);
+  }
 }
 
 .header__controls {
@@ -42,7 +51,7 @@
   height: 2px;
   margin-top: 10px;
   background-color: var(--white);
-  transition: transform var(--base-tr);
+  transition: transform var(--base-tr), background-color var(--base-tr);
 }
 .burger-btn::before {
   margin-top: 0;
@@ -116,7 +125,6 @@
     .logo-txt {
       font-size: 10px;
       text-transform: uppercase;
-      transition: transform var(--base-tr);
     }
   }
 
@@ -139,5 +147,43 @@
 
   .lead-btn {
     display: none;
+  }
+}
+
+// white bg pages
+.header.light {
+  .logo {
+    svg {
+      .up-path {
+        fill: #3a3a3a;
+      }
+      .down-path {
+        fill: #212120;
+      }
+    }
+    .logo-txt {
+      color: var(--black);
+    }
+  }
+
+  .burger-btn::after,
+  .burger-btn::before {
+    background-color: var(--black);
+  }
+
+  .lead-btn {
+    border: 1px solid var(--black);
+    color: var(--black);
+  }
+  @media (hover: hover) {
+    .lead-btn:hover {
+      color: var(--white);
+      background-color: var(--black);
+    }
+  }
+
+  .menu-overlay {
+    color: var(--black);
+    background: var(--white);
   }
 }

@@ -26,6 +26,9 @@ const switchLocalePath = useSwitchLocalePath();
   align-self: stretch;
   align-items: center;
   color: var(--f-w-40);
+  &.light {
+    color: var(--f-b-40);
+  }
   .locale-link {
     display: flex;
     align-items: center;
@@ -37,8 +40,13 @@ const switchLocalePath = useSwitchLocalePath();
   }
 }
 
-.lang-switcher .router-link-active {
-  color: var(--base-f);
+.lang-switcher {
+  .router-link-active {
+    color: var(--base-f);
+  }
+  &.light .router-link-active {
+    color: var(--black);
+  }
 }
 
 /* br mobile */

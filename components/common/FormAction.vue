@@ -1,5 +1,5 @@
 <template>
-  <form class="form">
+  <form class="form" :class="{ light: mode === 'light' }">
     <input
       :class="{
         error: v$.name.$error,
@@ -45,6 +45,14 @@
 <script setup>
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, minLength, maxLength, numeric } from '@vuelidate/validators';
+
+// dark or light
+const props = defineProps({
+  mode: {
+    type: String,
+    default: 'dark',
+  },
+});
 
 const config = useRuntimeConfig();
 const isLoading = ref(false);
@@ -226,7 +234,6 @@ input {
 }
 
 .valid {
-  border-color: var(--primary);
   color: var(--white);
 }
 .error {
@@ -244,6 +251,54 @@ input {
     border-color: var(--white);
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: inset 0 0 20px 20px var(--black);
+  }
+}
+
+.form.light {
+  input {
+    border-bottom: 1px solid var(--black);
+    color: var(--f-b-40);
+    &::placeholder {
+      color: var(--f-b-40);
+    }
+  }
+
+  .phone-wrapper {
+    .prefix {
+      color: var(--black);
+    }
+  }
+
+  .valid {
+    color: var(--black);
+  }
+  .error {
+    color: var(--f-b-40);
+  }
+
+  .lead-btn {
+    border: 1px solid var(--black);
+    color: var(--black);
+  }
+  .lead-btn:active {
+    color: var(--white);
+    background-color: var(--black);
+  }
+  @media (hover: hover) {
+    .lead-btn:hover {
+      color: var(--white);
+      background-color: var(--black);
+    }
+  }
+
+  // browser autofill
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--black);
+    border-color: var(--black);
+    box-shadow: inset 0 0 20px 20px var(--white);
   }
 }
 </style>
