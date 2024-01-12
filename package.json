@@ -22,6 +22,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.33",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
     "@vueuse/nuxt": "^10.7.1",

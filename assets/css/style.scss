@@ -410,3 +410,85 @@ a.rounded-btn-arrow {
     height: 60px;
   }
 }
+
+.folio-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 13px;
+  border: 1px solid var(--white);
+  border-radius: 45px;
+  font-size: 16px;
+  line-height: 100%;
+  transition: border-color var(--base-tr), background-color var(--base-tr);
+}
+.folio-nav:active,
+.folio-nav.router-link-active {
+  border-color: var(--blue);
+  background-color: var(--blue);
+}
+@media (hover: hover) {
+  .folio-nav:hover {
+    border-color: var(--blue);
+    background-color: var(--blue);
+  }
+}
+/* br mobile */
+@media (max-width: 767px) {
+  .folio-nav {
+    padding: 4px 10px;
+    border-radius: 45px;
+    font-size: 12px;
+  }
+}
+
+.card-share {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--white);
+  border-radius: 50%;
+  transition: background-color var(--base-tr), border-color var(--base-tr);
+  svg {
+    margin-top: 13px;
+    margin-left: 12px;
+  }
+}
+.card-share:active {
+  border-color: var(--blue);
+  background-color: var(--blue);
+}
+@media (hover: hover) {
+  .card-share:hover {
+    border-color: var(--blue);
+    background-color: var(--blue);
+  }
+}
+
+.filter-btn {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 120%;
+  background-color: transparent;
+  text-transform: uppercase;
+  transition: color var(--base-tr);
+  &:disabled {
+    opacity: 1;
+  }
+}
+
+.filter-btn:active,
+.filter-btn.active {
+  color: var(--blue);
+}
+@media (hover: hover) {
+  .filter-btn:hover {
+    color: var(--blue);
+  }
+}
+@media (max-width: 767px) {
+  .filter-btn {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 100%;
+  }
+}

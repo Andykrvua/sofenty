@@ -26,6 +26,7 @@
 
 <script setup>
 import { defineAsyncComponent } from 'vue';
+import { useLenis } from '~/composables/useLenis';
 
 const Heavy3D = defineAsyncComponent(() => import('/components/ThreeHero.vue'), { deferred: true });
 
@@ -35,5 +36,16 @@ useHead({
       src: '/simplex-noise.min.js',
     },
   ],
+});
+
+let lenis;
+
+onMounted(() => {
+  lenis = useLenis();
+  lenis.init();
+});
+
+onUnmounted(() => {
+  lenis.destroy();
 });
 </script>

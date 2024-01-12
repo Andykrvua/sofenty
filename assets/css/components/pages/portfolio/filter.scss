@@ -1,0 +1,34 @@
+.filters {
+  display: flex;
+  gap: 40px;
+  grid-column: 4/-1;
+  grid-row: 1;
+  margin-bottom: 38px;
+  align-items: flex-end;
+}
+/* br tablet */
+@media (max-width: 1270px) {
+  .filters {
+    grid-column: 1/-1;
+    grid-row: 3;
+  }
+}
+
+/* br mobile */
+@media (max-width: 767px) {
+  .filters {
+    position: sticky;
+    top: -1px;
+    justify-content: center;
+    &.is-pinned {
+      margin-bottom: 0;
+      padding: 10px 0 10px;
+      z-index: 1;
+      background-color: var(--f-b-40);
+      backdrop-filter: blur(3px);
+      .filter-btn {
+        padding: 9px 0 9px;
+      }
+    }
+  }
+}

@@ -9,7 +9,10 @@ export const contactsEnums = {
 export const navEnums = {
   about: '/about',
   service: '/service',
-  portfolio: '/',
+  portfolio: '/portfolio',
+  websites: '/portfolio/web',
+  mobileapps: '/portfolio/apps',
+  chatbots: '/portfolio/chatbots',
   vacancies: '/',
   contacts: '/contacts',
 };
