@@ -1,7 +1,7 @@
 <template>
   <main class="page" ref="main">
     <PagesPortfolioFirstScreen />
-    <PagesPortfolioChatBots :filter="true" />
+    <PagesPortfolioChatBots :onFilter="true" />
   </main>
 </template>
 

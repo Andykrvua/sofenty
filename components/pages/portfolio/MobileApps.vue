@@ -2,7 +2,7 @@
   <section class="mob-apps container" ref="main">
     <div class="mob-apps-grid">
       <h5 class="header-title h5">Моб. додатки</h5>
-      <div v-if="filter" class="filters" ref="sticky">
+      <div v-if="onFilter" class="filters" ref="sticky">
         <button
           class="btn filter-btn"
           :class="{ active: filter === 'ios' }"
@@ -63,7 +63,7 @@ import gsap from 'gsap';
 import { Flip } from 'gsap/Flip';
 
 const props = defineProps({
-  filter: {
+  onFilter: {
     type: Boolean,
     default: false,
   },

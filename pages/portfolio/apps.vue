@@ -1,7 +1,7 @@
 <template>
   <main class="page" ref="main">
     <PagesPortfolioFirstScreen />
-    <PagesPortfolioMobileApps :filter="true" />
+    <PagesPortfolioMobileApps :onFilter="true" />
   </main>
 </template>
 

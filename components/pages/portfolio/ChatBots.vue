@@ -2,7 +2,7 @@
   <section class="chat-bots container">
     <div class="chat-bots-grid">
       <h5 class="header-title h5">Чат-боти</h5>
-      <div v-if="filter" class="filters" ref="sticky">
+      <div v-if="onFilter" class="filters" ref="sticky">
         <button
           class="btn filter-btn"
           :class="{ active: filter === 'viber' }"
@@ -75,7 +75,7 @@ import img4 from '~/assets/img/chat-bots-logo/4.svg';
 import img5 from '~/assets/img/chat-bots-logo/5.svg';
 
 const props = defineProps({
-  filter: {
+  onFilter: {
     type: Boolean,
     default: false,
   },
