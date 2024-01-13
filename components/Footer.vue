@@ -13,7 +13,7 @@
       </p>
       <CommonFormAction :mode="mode" />
       <div v-if="type === 'default'" class="nav-wrapper">
-        <CommonContactsBlock />
+        <CommonContactsBlock :mode="mode" />
         <nav class="nav">
           <h6 class="text">Меню</h6>
           <ul>

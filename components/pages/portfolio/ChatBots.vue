@@ -217,11 +217,13 @@ function updateFilters(val) {
 }
 
 onMounted(() => {
-  const observer = new IntersectionObserver(
-    ([e]) => e.target.classList.toggle('is-pinned', e.intersectionRatio < 1),
-    { threshold: [1] }
-  );
+  if (props.onFilter) {
+    const observer = new IntersectionObserver(
+      ([e]) => e.target.classList.toggle('is-pinned', e.intersectionRatio < 1),
+      { threshold: [1] }
+    );
 
-  observer.observe(sticky.value);
+    observer.observe(sticky.value);
+  }
 });
 </script>

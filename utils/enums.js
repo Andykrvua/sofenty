@@ -13,6 +13,6 @@ export const navEnums = {
   websites: '/portfolio/web',
   mobileapps: '/portfolio/apps',
   chatbots: '/portfolio/chatbots',
-  vacancies: '/',
+  vacancies: '/vacancies',
   contacts: '/contacts',
 };

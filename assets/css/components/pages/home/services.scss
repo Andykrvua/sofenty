@@ -39,7 +39,7 @@
     width: 7px;
     height: 7px;
     transform: translateY(-50%);
-    border: 2px solid #d9d9d9;
+    border: 2px solid var(--light-gray);
     border-radius: 50%;
     background: var(--white);
   }
@@ -65,7 +65,7 @@
 
 .dots-btn {
   padding: 20px 15px;
-  border-left: 3px solid #d9d9d9;
+  border-left: 3px solid var(--light-gray);
   text-align: left;
   font-size: 14px;
   line-height: 14px;

@@ -28,13 +28,16 @@ const modeToogle = () => {
   if (route.path.includes('/contacts')) {
     colorMode.value = 'light';
     footerType.value = 'contacts';
+  } else if (route.path.includes('/vacancies')) {
+    colorMode.value = 'light';
+    footerType.value = 'default';
   } else {
     colorMode.value = 'dark';
     footerType.value = 'default';
   }
 };
 
-if (route.path.includes('/contacts')) {
+if (route.path.includes('/contacts') || route.path.includes('/vacancies')) {
   modeToogle();
 }
 
@@ -52,4 +55,15 @@ const head = useLocaleHead({
   addSeoAttributes: true,
 });
 // const title = computed(() => t('layouts.title', { title: t(route.meta.title ?? 'TBD') }))
+
+let lenis;
+
+onMounted(() => {
+  lenis = useLenis();
+  lenis.init();
+});
+
+onUnmounted(() => {
+  lenis.destroy();
+});
 </script>

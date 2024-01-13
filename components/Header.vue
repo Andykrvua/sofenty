@@ -74,7 +74,7 @@
             </li>
           </ul>
         </nav>
-        <CommonContactsBlock />
+        <CommonContactsBlock :mode="mode" />
       </div>
     </div>
   </header>

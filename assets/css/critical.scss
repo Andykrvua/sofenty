@@ -17,6 +17,7 @@ body,
   font-size: 18px;
   color: var(--base-f);
   background-color: var(--base-bg);
+  transition: background-color var(--base-tr);
   &.light {
     background-color: var(--white);
   }

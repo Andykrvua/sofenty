@@ -72,7 +72,9 @@
   top: var(--header-h);
   pointer-events: none;
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  background: var(--menu-overlay);
+  // background: var(--menu-overlay);
+  background-color: var(--black);
+  transition: background-color var(--base-tr);
 }
 
 .menu-wrapper {
