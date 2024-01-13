@@ -1,5 +1,6 @@
 <template>
-  <div ref="container" style="width: 100%; height: 100%; opacity: 0"></div>
+  <!-- <div ref="container" style="width: 100%; height: 100%; opacity: 0"></div> -->
+  <canvas id="canvas" ref="container" style="width: 100%; height: 100%; opacity: 0"></canvas>
 </template>
 
 <script setup>
@@ -16,7 +17,7 @@ import {
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-const container = ref();
+// const container = ref();
 
 // index or about
 const props = defineProps({
@@ -33,6 +34,8 @@ const props = defineProps({
 let camera,
   scene,
   renderer,
+  raf,
+  canvas,
   controls,
   timeout_Debounce,
   noise = new SimplexNoise(),
@@ -61,9 +64,11 @@ const funcResize = () => {
 };
 
 const onWindowResize = () => {
-  camera.aspect = container.value.clientWidth / container.value.clientHeight;
+  // camera.aspect = container.value.clientWidth / container.value.clientHeight;
+  camera.aspect = canvas.clientWidth / canvas.clientHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(container.value.clientWidth, container.value.clientHeight);
+  // renderer.setSize(container.value.clientWidth, container.value.clientHeight);
+  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 };
 
 const animate = () => {
@@ -118,7 +123,7 @@ const onMouseMove = (e) => {
 };
 
 const run = () => {
-  requestAnimationFrame(run);
+  raf = requestAnimationFrame(run);
   animate();
 };
 
@@ -129,25 +134,29 @@ onMounted(() => {
   run();
 
   setTimeout(() => {
-    container.value.style.opacity = '1';
+    // container.value.style.opacity = '1';
+    canvas.style.opacity = '1';
   }, 1000);
 
   function init() {
+    canvas = document.getElementById('canvas');
     if (props.page === 'index') {
-      camera = new PerspectiveCamera(
-        45,
-        container.value.clientWidth / container.value.clientHeight,
-        0.01,
-        1000
-      );
+      // camera = new PerspectiveCamera(
+      //   45,
+      //   container.value.clientWidth / container.value.clientHeight,
+      //   0.01,
+      //   1000
+      // );
+      camera = new PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.01, 1000);
       camera.position.set(0, 0, 200);
     } else if (props.page === 'about') {
-      camera = new PerspectiveCamera(
-        30,
-        container.value.clientWidth / container.value.clientHeight,
-        0.01,
-        1000
-      );
+      camera = new PerspectiveCamera(30, canvas.clientWidth / canvas.clientHeight, 0.01, 1000);
+      // camera = new PerspectiveCamera(
+      //   30,
+      //   container.value.clientWidth / container.value.clientHeight,
+      //   0.01,
+      //   1000
+      // );
       if (window.innerWidth < 768) {
         camera.position.set(0, 0, 200);
       } else {
@@ -184,13 +193,14 @@ onMounted(() => {
       }
     }
     scene.add(mesh);
-
     renderer = new WebGLRenderer({
+      canvas,
       antialias: true,
       alpha: true,
     });
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(container.value.clientWidth, container.value.clientHeight);
+    // renderer.setSize(container.value.clientWidth, container.value.clientHeight);
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 
     controls = new OrbitControls(camera, renderer.domElement);
     // controls.autoRotate = true;
@@ -199,11 +209,58 @@ onMounted(() => {
     controls.minDistance = 150;
     controls.enablePan = false;
 
-    container.value.appendChild(renderer.domElement);
-    container.value.style.touchAction = 'none';
+    // container.value.appendChild(renderer.domElement);
+    // container.value.append(renderer.domElement);
+    // container.value.style.touchAction = 'none';
+    canvas.style.touchAction = 'none';
     window.addEventListener('mousemove', onMouseMove, false);
     window.addEventListener('resize', funcResize);
   }
+});
+
+function disposeObject(object) {
+  if (!object) return;
+  const geometries = new Map();
+  const materials = new Map();
+  const textures = new Map();
+  object.traverse((object) => {
+    const mesh = object;
+    if (mesh.isMesh) {
+      const geometry = mesh.geometry;
+      if (geometry) {
+        geometries.set(geometry.uuid, geometry);
+      }
+      const material = mesh.material;
+      if (material) {
+        materials.set(material.uuid, material);
+        for (const key in material) {
+          const texture = material[key];
+          if (texture && texture.isTexture) {
+            textures.set(texture.uuid, texture);
+          }
+        }
+      }
+    }
+  });
+  for (const entry of textures) {
+    entry[1].dispose();
+  }
+  for (const entry of materials) {
+    entry[1].dispose();
+  }
+  for (const entry of geometries) {
+    entry[1].dispose();
+  }
+}
+
+function cleanUpThree(scene, renderer) {
+  disposeObject(scene);
+  renderer.dispose();
+}
+
+onBeforeUnmount(() => {
+  cancelAnimationFrame(raf);
+  cleanUpThree(scene, renderer);
 });
 
 onUnmounted(() => {

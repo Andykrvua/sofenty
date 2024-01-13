@@ -29,6 +29,17 @@ useHead({
     },
   ],
 });
+
+let lenis;
+
+onMounted(() => {
+  lenis = useLenis();
+  lenis.init();
+});
+
+onUnmounted(() => {
+  lenis.destroy();
+});
 </script>
 
 <style scoped>

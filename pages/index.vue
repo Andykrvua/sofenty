@@ -37,14 +37,14 @@ useHead({
   ],
 });
 
-// let lenis;
+let lenis;
 
-// onMounted(() => {
-//   lenis = useLenis();
-//   lenis.init();
-// });
+onMounted(() => {
+  lenis = useLenis();
+  lenis.init();
+});
 
-// onUnmounted(() => {
-//   lenis.destroy();
-// });
+onUnmounted(() => {
+  lenis.destroy();
+});
 </script>

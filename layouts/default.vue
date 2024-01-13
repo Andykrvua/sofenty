@@ -59,11 +59,11 @@ const head = useLocaleHead({
 let lenis;
 
 onMounted(() => {
-  lenis = useLenis();
-  lenis.init();
+  // lenis = useLenis();
+  // lenis.init();
 });
 
 onUnmounted(() => {
-  lenis.destroy();
+  // lenis.destroy();
 });
 </script>

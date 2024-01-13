@@ -227,6 +227,8 @@
 <script setup>
 import gsap from 'gsap';
 
+let lenis;
+
 useHead({
   title: 'Vacancies - Sofenty',
   meta: [
@@ -273,9 +275,12 @@ onMounted(async () => {
     //   });
     // });
   }, main.value);
+  lenis = useLenis();
+  lenis.init();
 });
 
 onUnmounted(() => {
+  lenis.destroy();
   ctx.revert();
 });
 </script>

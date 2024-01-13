@@ -23,11 +23,11 @@ useHead({
 
 const main = ref();
 let ctx;
-// let lenis;
+let lenis;
 
 onMounted(async () => {
-  // lenis = useLenis();
-  // lenis.init();
+  lenis = useLenis();
+  lenis.init();
 
   ctx = gsap.context((self) => {
     let proxy = { skew: 0 },
@@ -95,7 +95,7 @@ onMounted(async () => {
 });
 
 onUnmounted(() => {
-  // lenis.destroy();
+  lenis.destroy();
   ctx.revert();
 });
 </script>
