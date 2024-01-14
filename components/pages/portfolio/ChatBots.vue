@@ -111,7 +111,7 @@ const data = ref([
     },
     url: '/',
     square: false,
-    platform: 'telegram',
+    platform: 'viber',
   },
   {
     title: 'Freepoc',
@@ -123,7 +123,7 @@ const data = ref([
     },
     url: '/',
     square: true,
-    platform: 'viber',
+    platform: 'telegram',
   },
   {
     title: 'Bot Boim',
@@ -159,7 +159,7 @@ const data = ref([
     },
     url: '/',
     square: true,
-    platform: 'viber',
+    platform: 'telegram',
   },
 
   {

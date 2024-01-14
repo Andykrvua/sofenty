@@ -27,11 +27,13 @@
         <h2 class="card__descr text">Спрощуємо, автоматизовуємо та просуваємо бізнес на новий рівень</h2>
         <button class="lead-btn btn lead-btn__mobile">{{ $t('header.lead_btn') }}</button>
         <div class="card__popup">
-          <button class="btn btn-black active">Веб-сайти</button>
-          <button class="btn btn-black">Системи автматизації бізнесів</button>
-          <button class="btn btn-black">CRM</button>
-          <button class="btn btn-black">Чат боти</button>
-          <button class="btn btn-black">Мобільні додатки</button>
+          <NuxtLink :to="localePath(navEnums.websites)" class="btn btn-black active">Веб-сайти</NuxtLink>
+          <NuxtLink :to="localePath(navEnums.portfolio)" class="btn btn-black"
+            >Системи автматизації бізнесів</NuxtLink
+          >
+          <NuxtLink :to="localePath(navEnums.portfolio)" class="btn btn-black">CRM</NuxtLink>
+          <NuxtLink :to="localePath(navEnums.chatbots)" class="btn btn-black">Чат боти</NuxtLink>
+          <NuxtLink :to="localePath(navEnums.mobileapps)" class="btn btn-black">Мобільні додатки</NuxtLink>
         </div>
       </div>
     </div>

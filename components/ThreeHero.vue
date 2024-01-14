@@ -1,7 +1,14 @@
 <template>
   <!-- <div ref="container" style="width: 100%; height: 100%; opacity: 0"></div> -->
-  <canvas id="canvas" ref="container" style="width: 100%; height: 100%; opacity: 0"></canvas>
+  <canvas id="canvas" ref="container" style="opacity: 0" />
 </template>
+
+<style scoped>
+#canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+</style>
 
 <script setup>
 import {
@@ -15,7 +22,7 @@ import {
   DirectionalLight,
   AmbientLight,
 } from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 // const container = ref();
 
@@ -36,7 +43,6 @@ let camera,
   renderer,
   raf,
   canvas,
-  controls,
   timeout_Debounce,
   noise = new SimplexNoise(),
   mesh,
@@ -46,6 +52,7 @@ let camera,
   maxX = 110,
   minY = -70,
   maxY = 70;
+// controls,
 // minX = -60,
 // maxX = 60,
 // minY = -40,
@@ -109,7 +116,7 @@ const animate = () => {
   }
 
   mesh.rotation.y += 0.006;
-  controls.update();
+  // controls.update();
 
   renderer.render(scene, camera);
 };
@@ -124,6 +131,7 @@ const onMouseMove = (e) => {
 
 const run = () => {
   raf = requestAnimationFrame(run);
+  // renderer.setAnimationLoop(animate);
   animate();
 };
 
@@ -202,12 +210,12 @@ onMounted(() => {
     // renderer.setSize(container.value.clientWidth, container.value.clientHeight);
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 
-    controls = new OrbitControls(camera, renderer.domElement);
+    // controls = new OrbitControls(camera, renderer.domElement);
     // controls.autoRotate = true;
     // controls.autoRotateSpeed = 4;
-    controls.maxDistance = 350;
-    controls.minDistance = 150;
-    controls.enablePan = false;
+    // controls.maxDistance = 350;
+    // controls.minDistance = 150;
+    // controls.enablePan = false;
 
     // container.value.appendChild(renderer.domElement);
     // container.value.append(renderer.domElement);
@@ -259,6 +267,7 @@ function cleanUpThree(scene, renderer) {
 }
 
 onBeforeUnmount(() => {
+  // renderer.setAnimationLoop(null);
   cancelAnimationFrame(raf);
   cleanUpThree(scene, renderer);
 });

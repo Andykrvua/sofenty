@@ -15,7 +15,9 @@
   --z-header: 2;
   --z-canvas-main-hero: 0;
   --base-tr: 0.3s ease-in-out;
-  --menu-overlay: radial-gradient(#1d1d1d, #181818);
+  /* --menu-overlay: radial-gradient(#1d1d1d, #181818); */
+  /* --menu-overlay: radial-gradient(circle, #1d1d1d 20%, #181818 50%); */
+  --menu-overlay: radial-gradient(circle, #181b1f 20%, #181818 50%);
 }
 /* br md */
 /* @media (max-width: 1536px) {

@@ -43,7 +43,7 @@ export default defineNuxtConfig({
       { name: 'Ukraine', code: 'uk', iso: 'uk-UA', file: 'uk.js' },
     ],
     detectBrowserLanguage: false,
-    baseUrl: '/',
+    baseUrl: 'https://sofenty.com',
     strategy: 'prefix_except_default',
     defaultLocale: 'uk',
     lazy: true,

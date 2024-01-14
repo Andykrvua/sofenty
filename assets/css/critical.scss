@@ -16,6 +16,9 @@ body,
   font-family: 'Euclid Flex', sans-serif;
   font-size: 18px;
   color: var(--base-f);
+}
+
+body {
   background-color: var(--base-bg);
   transition: background-color var(--base-tr);
   &.light {

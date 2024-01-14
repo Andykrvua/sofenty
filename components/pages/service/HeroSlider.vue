@@ -7,7 +7,9 @@
       <div class="service-item item-1" :class="{ active: isHover === 1 }" @mouseenter="hover(1)">
         <img src="~/assets/img/service/1.webp" alt="Веб-сайти" width="788" height="600" loading="lazy" />
         <div class="item-content">
-          <button class="btn slider-btn"><CommonSvgArrow :color="'var(--black)'" /></button>
+          <NuxtLink :to="localePath(navEnums.websites)" class="btn slider-btn"
+            ><CommonSvgArrow :color="'var(--black)'"
+          /></NuxtLink>
           <h5 class="h5">Веб-сайти</h5>
           <div class="item-tags">
             <span class="item-tag tab">Інтернет магазини</span>
@@ -25,7 +27,9 @@
           loading="lazy"
         />
         <div class="item-content">
-          <button class="btn slider-btn"><CommonSvgArrow :color="'var(--black)'" /></button>
+          <NuxtLink :to="localePath(navEnums.mobileapps)" class="btn slider-btn"
+            ><CommonSvgArrow :color="'var(--black)'"
+          /></NuxtLink>
           <h5 class="h5">
             Мобільні <br />
             додатки
@@ -40,7 +44,9 @@
       <div class="service-item item-3" :class="{ active: isHover === 3 }" @mouseenter="hover(3)">
         <img src="~/assets/img/service/3.webp" alt="Чат боти" width="683" height="600" loading="lazy" />
         <div class="item-content">
-          <button class="btn slider-btn"><CommonSvgArrow :color="'var(--black)'" /></button>
+          <NuxtLink :to="localePath(navEnums.chatbots)" class="btn slider-btn"
+            ><CommonSvgArrow :color="'var(--black)'"
+          /></NuxtLink>
           <h5 class="h5">Чат боти</h5>
           <div class="item-tags">
             <span class="item-tag tab">Інтернет магазини</span>
